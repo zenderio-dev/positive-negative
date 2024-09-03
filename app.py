@@ -25,6 +25,11 @@ async def classify(request: TextRequest):
     else:
         raise HTTPException(status_code=response.status_code, detail="Error connecting to the ML service")
 
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the classification API"}
+
+
 if __name__ == '__main__':
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
