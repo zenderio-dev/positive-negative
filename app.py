@@ -1,6 +1,7 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import requests
+import os
 
 app = FastAPI()
 
@@ -24,9 +25,10 @@ async def classify(request: TextRequest):
     else:
         raise HTTPException(status_code=response.status_code, detail="Error connecting to the ML service")
 
-if __name__ == 'main':
+if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=10000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host='0.0.0.0', port=port)
 
 
 # CHANGE THIS to something you want your machine learning model to classify
