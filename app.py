@@ -2,8 +2,17 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import requests
 import os
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Разрешение запросов с любых источников
+    allow_credentials=True,
+    allow_methods=["*"],  # Разрешение всех методов (GET, POST и т.д.)
+    allow_headers=["*"],  # Разрешение всех заголовков
+)
 
 class TextRequest(BaseModel):
     text: str
