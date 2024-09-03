@@ -26,7 +26,7 @@ async def classify(request: TextRequest):
 
 if __name__ == 'main':
     import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=10000)
 
 
 # CHANGE THIS to something you want your machine learning model to classify
