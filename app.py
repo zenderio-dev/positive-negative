@@ -20,8 +20,9 @@ class TextRequest(BaseModel):
 
 @app.post("/classify")
 async def classify(request: TextRequest):
-    key = "912f3430-6b6a-11ef-8de7-655e3ceb32eedf059db4-0b43-4408-a8f7-bc47321ae861"
+    key = "a9d58170-6b8c-11ef-8de7-655e3ceb32eede8d39cd-7fc0-47c5-a19a-3a9e27f2138c"
     url = "https://machinelearningforkids.co.uk/api/scratch/"+ key + "/classify"
+
 
 
     response = requests.get(url, params={"data": request.text})
